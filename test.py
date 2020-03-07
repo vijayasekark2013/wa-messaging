@@ -16,17 +16,22 @@ driver = webdriver.Chrome(ChromeDriverManager().install())
 # Replace below path with the absolute path
 # to chromedriver in your computer
 #driver = webdriver.Chrome('chromedriver')
+chrome_options = Options()
+chrome_options.add_argument("user-data-dir=selenium")
+driver = webdriver.Chrome(chrome_options=chrome_options)
+#driver.get("www.google.com")
+
 
 driver.get("https://web.whatsapp.com/")
 wait = WebDriverWait(driver, 600)
 
 # Replace 'Friend's Name' with the name of your friend
 # or the name of a group
-#target = '"🏫 பள்ளி நண்பர்கள்👭👬👫"'
-target = '"US Group"'
+target = ''
+#target = '"US Group"'
 
 # Replace the below string with your own message
-string = " Good Morning from Nitika :-) "
+string = " msg to be sent"
 
 x_arg = '//span[contains(@title,' + target + ')]'
 group_title = wait.until(EC.presence_of_element_located((
